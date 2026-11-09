@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://eduardmur.github.io/tesla-roadster-simulator/sitemap.xml

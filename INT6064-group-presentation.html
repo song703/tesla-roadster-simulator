@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>tesla-roadster-simulator</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500&family=Inter:wght@400;500&display=swap">
+<style>
+:root {
+  --void: #030014;
+  --card: #060317;
+  --ink: #f4f0ff;
+  --ash: #a8a6b7;
+  --fog: #918ea0;
+  --accent: #9382ff;
+  --font-display: "DM Sans", Inter, sans-serif;
+  --font-text: Inter, "Segoe UI", sans-serif;
+  --stage-bg: #030014;
+  --slide-bg: #030014;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { width: 100%; height: 100%; margin: 0; overflow: hidden; background: var(--void); font-family: var(--font-text); color: var(--ink); }
+.deck-viewport { position: fixed; inset: 0; overflow: hidden; background: var(--void); }
+.deck-stage { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; overflow: hidden; transform-origin: 0 0; background: var(--void); }
+.slide {
+  position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden;
+  visibility: hidden; opacity: 0; pointer-events: none;
+  background:
+    radial-gradient(1.5px 1.5px at 12% 18%, rgba(244,240,255,.55), transparent),
+    radial-gradient(1.5px 1.5px at 28% 72%, rgba(244,240,255,.4), transparent),
+    radial-gradient(1px 1px at 70% 22%, rgba(244,240,255,.5), transparent),
+    radial-gradient(1.5px 1.5px at 84% 64%, rgba(244,240,255,.35), transparent),
+    radial-gradient(1px 1px at 48% 40%, rgba(147,130,255,.7), transparent),
+    var(--void);
+  color: var(--ink);
+}
+.slide.active, .slide.visible { visibility: visible; opacity: 1; pointer-events: auto; z-index: 1; }
+.deck-controls { position: fixed; left: 50%; bottom: 16px; transform: translateX(-50%); z-index: 1000; color: var(--fog); font-size: 13px; }
+.pad { position: absolute; inset: 56px 80px; display: flex; flex-direction: column; }
+.local { display: flex; align-items: center; justify-content: space-between; height: 44px; margin-bottom: 20px; padding: 0 18px; border-radius: 999px; background: var(--card); box-shadow: rgba(255,255,255,.05) 0 0 24px inset; }
+.product { font-family: var(--font-display); font-weight: 500; font-size: 16px; }
+.pills { display: flex; gap: 12px; align-items: center; }
+.pill, .pill-blue, .launch { font-size: 13px; font-weight: 500; color: var(--fog); background: transparent; border-radius: 5px; padding: 4px 8px; }
+.pill-blue { color: var(--accent); }
+.kicker { font-family: var(--font-display); font-weight: 500; font-size: 16px; color: var(--accent); }
+h1 { font-family: var(--font-display); font-weight: 500; font-size: 64px; line-height: 1.11; letter-spacing: -0.4px; color: var(--ink); }
+h2 { font-family: var(--font-display); font-weight: 500; font-size: 40px; line-height: 1.17; letter-spacing: -0.3px; margin: 0 0 12px; }
+p { font-size: 18px; line-height: 1.5; font-weight: 400; color: var(--ash); }
+.muted { color: var(--fog); font-size: 16px; }
+.link { color: var(--accent); text-decoration: none; font-weight: 500; }
+.row { display: grid; gap: 16px; }
+.g3 { grid-template-columns: 1fr 1fr 1fr; }
+.g4 { grid-template-columns: repeat(4, 1fr); }
+.card { background: var(--card); border-radius: 16px; padding: 24px 28px; box-shadow: rgba(255,255,255,.05) 0 0 24px inset; }
+.card h3 { font-family: var(--font-display); font-weight: 500; font-size: 24px; line-height: 1.33; margin-bottom: 10px; color: var(--ink); }
+.live { flex: 1; min-height: 0; margin-top: 16px; overflow: hidden; position: relative; border-radius: 16px; background: var(--card); box-shadow: rgba(255,255,255,.05) 0 0 24px inset; }
+.live iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; border-radius: 16px; background: #030014; }
+.note { margin: 0 0 4px; color: var(--fog); max-width: 1400px; }
+@media print {
+  html, body { width: 1920px; height: auto; overflow: visible; background: #fff; }
+  .deck-viewport { position: static; overflow: visible; }
+  .deck-stage { position: static; width: auto; height: auto; transform: none !important; }
+  .slide { position: relative; visibility: visible !important; opacity: 1 !important; width: 1920px; height: 1080px; break-after: page; page-break-after: always; }
+  .deck-controls { display: none !important; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.2s !important; }
+}
+</style>
+</head>
+<body>
+<div class="deck-viewport"><main class="deck-stage" id="deckStage">
+
+<section class="slide active visible">
+  <div class="pad" style="align-items:center;text-align:center;justify-content:center;gap:20px;">
+    <p class="kicker">INT6064</p>
+    <h1>tesla-roadster-simulator</h1>
+    <p style="max-width:720px;">A safe test lap. Four lessons for Secondary 2–3. Students write the instructions. The next pages are the program itself.</p>
+    <p class="muted">Sequence. Repeat. If. Not affiliated with Tesla, Inc.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="pad">
+    <p class="kicker">What this project is</p>
+    <h2>Students write the lap. They do not drive it.</h2>
+    <div class="row g3" style="flex:1;">
+      <article class="card"><h3>The problem</h3><p>A test driver must finish the laps, stay in lane, and slow down when a rule is met. Hong Kong Secondary 2–3, about 13–15. Four lessons, about 40 minutes each. Pairs share one browser tab. They install nothing.</p></article>
+      <article class="card"><h3>The STEM</h3><p>Mathematics: speed is distance over time, and the strip prints both. Physics: Set Max Speed 16 is 16 m/s, and Brake changes that target. A number in the program becomes motion on the circuit.</p></article>
+      <article class="card"><h3>The language</h3><p>Start and Stop frame every program. Repeat is a counted loop. If reads speed, lap, and distance from the car. There is no eval. Foo is refused before the car moves. A copied sample is not the mark.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="slide mist">
+  <div class="pad">
+    <div class="local"><span class="product">tesla-roadster-simulator</span><span class="pills"><span class="pill">Lesson 2</span><span class="pill-blue">Live</span></span></div>
+    <h2>One lap. Set Max Speed 16.</h2>
+    <p class="note">Look at the data strip, not the car. 16 is 16 m/s. Ask which line chose that number. A copied sample is not the mark.</p>
+    <div class="live" data-play="beginner"></div>
+  </div>
+</section>
+
+<section class="slide mist">
+  <div class="pad">
+    <div class="local"><span class="product">tesla-roadster-simulator</span><span class="pills"><span class="pill">Lesson 3</span><span class="pill-blue">Live</span></span></div>
+    <h2>Repeat 2 times. Same lap, counted.</h2>
+    <p class="note">Pasting Follow Track twice finishes the same way, but a change must be made in two places. Stop inside the braces ends lap 1.</p>
+    <div class="live" data-play="intermediate"></div>
+  </div>
+</section>
+
+<section class="slide mist">
+  <div class="pad">
+    <div class="local"><span class="product">tesla-roadster-simulator</span><span class="pills"><span class="pill">Lesson 4</span><span class="pill-blue">Live</span></span></div>
+    <h2>If lap &gt;= 1, the cap falls to 12.</h2>
+    <p class="note">Lap 1 stays at 24 m/s. Lap 2 drops to 12. The sentence they write cites those two readings. A brake with no If does not pass.</p>
+    <div class="live" data-play="advanced"></div>
+  </div>
+</section>
+
+<section class="slide mist">
+  <div class="pad">
+    <div class="local"><span class="product">tesla-roadster-simulator</span><span class="pills"><span class="launch">Not lesson 5</span><span class="pill-blue">Live</span></span></div>
+    <h2>Launch. Cold-gas thrusters.</h2>
+    <p class="note">Same idea as the circuit: a number they set has to be enough for the manoeuvre. Pairs who finish early only. Easy to overuse.</p>
+    <div class="live" data-play="ramp"></div>
+  </div>
+</section>
+
+<section class="slide mist">
+  <div class="pad">
+    <div class="local"><span class="product">tesla-roadster-simulator</span><a class="link" href="#why">Why this tool</a></div>
+    <h2>Between Scratch and Python.</h2>
+    <div class="row g3" style="flex:1;">
+      <article class="card"><h3>Scratch</h3><p>Right for upper primary. This class has already met sequence in blocks. A sprite that moves ten steps does not make metres per second visible.</p></article>
+      <article class="card"><h3>This</h3><p>They type a line instead of dragging a block. That is the step before Python, but they never write a general script. Loops, length, and run time are capped.</p></article>
+      <article class="card"><h3>Python</h3><p>Better when the goal is a table or a graph. This tool will not sit a Python exam, and it does not teach files or a micro:bit. Next module: the same brief as a loop.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="slide mist">
+  <div class="pad">
+    <p class="kicker">The four lessons</p>
+    <h2>One new idea each time.</h2>
+    <div class="row g4" style="flex:1;">
+      <article class="card"><h3>1 · Paper</h3><p>No computer. Watch one lap, then write six to ten lines. The other pair walks a taped rectangle and does only what is written. “Go properly” fails. The exit ticket is one line rewritten as a number plus an action.</p></article>
+      <article class="card"><h3>2 · Sequence</h3><p>Start, Set Max Speed, Follow Track, Stop. Show a broken program first. Pairs change only the speed and say what the strip did: higher cap, still one lap.</p></article>
+      <article class="card"><h3>3 · Repeat</h3><p>One lap, named and counted. Pasting Follow Track twice is the same motion and a worse algorithm, because a change must be made in two places. Predict Repeat 3 before they run it.</p></article>
+      <article class="card"><h3>4 · If</h3><p>After the first lap, go slower. They write both speeds and one sentence. That work is the grade. The banner in the app is a prompt, not the mark.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="pad">
+    <p class="kicker">In the room</p>
+    <h2>What we say when it goes wrong.</h2>
+    <div class="row g3" style="flex:1;">
+      <article class="card"><h3>No Start or Stop</h3><p>The editor rejects it before the car moves. It is not a Scratch stack of loose blocks.</p></article>
+      <article class="card"><h3>If lap = 2</h3><p>They wrote the ending they want. Lap 2 does not exist yet. Use lap &gt;= 1 after the first Follow Track.</p></article>
+      <article class="card"><h3>Faster feels safer</h3><p>The advanced task lowers the cap on purpose. Follow Track hides steering. The ramp is not lesson 5.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="slide mist">
+  <div class="pad">
+    <p class="kicker">The grade</p>
+    <h2>Lesson 4 only. Three pieces.</h2>
+    <div class="row g3" style="flex:1;">
+      <article class="card"><h3>The program</h3><p>An If tied to lap or speed, and the motion actually changes. They can point at the line. A passed banner from a copied sample does not count.</p></article>
+      <article class="card"><h3>Two readings</h3><p>Speed on lap 1 and speed on lap 2, taken from the strip. The in-app check is a prompt for the teacher, not the mark.</p></article>
+      <article class="card"><h3>One sentence</h3><p>“Lap became 1, then max speed changed to 12.” That is computational thinking checked against the physics, not a longer program.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="pad" style="align-items:center;text-align:center;justify-content:center;gap:20px;">
+    <p class="kicker">tesla-roadster-simulator</p>
+    <h1>The code is not the mark.</h1>
+    <p>Lesson 4 keeps the program, two readings, and one sentence.</p>
+    <p class="muted">Plan. Repeat. If.</p>
+  </div>
+</section>
+
+</main></div>
+<div class="deck-controls" id="pager">1 / 8</div>
+<script>
+const SIM = "https://song703.github.io/tesla-roadster-simulator/?play=";
+class SlidePresentation {
+  constructor() {
+    this.slides = document.querySelectorAll(".slide");
+    this.current = 0;
+    this.stage = document.getElementById("deckStage");
+    this.scale();
+    window.addEventListener("resize", () => this.scale());
+    window.addEventListener("keydown", (e) => {
+      if (["ArrowRight", "ArrowDown", "PageDown", " "].includes(e.key)) { e.preventDefault(); this.show(this.current + 1); }
+      if (["ArrowLeft", "ArrowUp", "PageUp"].includes(e.key)) { e.preventDefault(); this.show(this.current - 1); }
+    });
+    window.addEventListener("wheel", (e) => {
+      const now = Date.now();
+      if (now - (this.lastWheel || 0) < 800) return;
+      this.lastWheel = now;
+      this.show(this.current + (e.deltaY > 0 ? 1 : -1));
+    }, { passive: true });
+    this.show(0);
+  }
+  scale() {
+    const f = Math.min(window.innerWidth / 1920, window.innerHeight / 1080);
+    const x = (window.innerWidth - 1920 * f) / 2;
+    const y = (window.innerHeight - 1080 * f) / 2;
+    this.stage.style.transform = "translate(" + x + "px," + y + "px) scale(" + f + ")";
+  }
+  show(i) {
+    this.current = Math.max(0, Math.min(i, this.slides.length - 1));
+    this.slides.forEach((s, n) => {
+      const on = n === this.current;
+      s.classList.toggle("active", on);
+      s.classList.toggle("visible", on);
+      const slot = s.querySelector("[data-play]");
+      if (!slot) return;
+      slot.replaceChildren();
+      if (!on) return;
+      const frame = document.createElement("iframe");
+      frame.title = "Tesla Roadster simulator";
+      frame.src = SIM + slot.dataset.play;
+      slot.appendChild(frame);
+    });
+    document.getElementById("pager").textContent = (this.current + 1) + " / " + this.slides.length;
+  }
+}
+new SlidePresentation();
+</script>
+</body>
+</html>

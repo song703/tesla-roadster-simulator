@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>tesla-roadster-simulator</title>
+<title>Tesla Roadster Programming Simulator</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500&family=Inter:wght@400;500&display=swap">
 <style>
 :root {
@@ -35,7 +35,7 @@ html, body { width: 100%; height: 100%; margin: 0; overflow: hidden; background:
   color: var(--ink);
 }
 .slide.active, .slide.visible { visibility: visible; opacity: 1; pointer-events: auto; z-index: 1; }
-.deck-controls { position: fixed; left: 50%; bottom: 16px; transform: translateX(-50%); z-index: 1000; color: var(--fog); font-size: 13px; }
+.deck-controls { position: fixed; left: 50%; bottom: 18px; transform: translateX(-50%); z-index: 1000; color: #c8c4d8; font-size: 22px; font-weight: 500; letter-spacing: 0.04em; }
 .pad { position: absolute; inset: 56px 80px; display: flex; flex-direction: column; }
 .local { display: flex; align-items: center; justify-content: space-between; height: 44px; margin-bottom: 20px; padding: 0 18px; border-radius: 999px; background: var(--card); box-shadow: rgba(255,255,255,.05) 0 0 24px inset; }
 .product { font-family: var(--font-display); font-weight: 500; font-size: 16px; }
@@ -44,20 +44,32 @@ html, body { width: 100%; height: 100%; margin: 0; overflow: hidden; background:
 .pill-blue { color: var(--accent); }
 .kicker { font-family: var(--font-display); font-weight: 500; font-size: 16px; color: var(--accent); }
 h1 { font-family: var(--font-display); font-weight: 500; font-size: 64px; line-height: 1.11; letter-spacing: -0.4px; color: var(--ink); }
-h2 { font-family: var(--font-display); font-weight: 500; font-size: 40px; line-height: 1.17; letter-spacing: -0.3px; margin: 0 0 12px; }
-p { font-size: 18px; line-height: 1.5; font-weight: 400; color: var(--ash); }
-.muted { color: var(--fog); font-size: 16px; }
+h2 { font-family: var(--font-display); font-weight: 500; font-size: 42px; line-height: 1.15; letter-spacing: -0.3px; margin: 0 0 20px; }
+p, li { font-size: 22px; line-height: 1.45; font-weight: 400; color: var(--ash); }
+.muted { color: #c8c4d8; font-size: 22px; }
+.flow { align-self: flex-start; margin: 0 0 22px; padding: 12px 18px; border-radius: 999px; background: var(--card); box-shadow: rgba(255,255,255,.05) 0 0 24px inset; color: var(--ink); font-size: 22px; font-weight: 500; }
+.mark { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; margin-right: 10px; border-radius: 10px; background: rgba(147,130,255,.16); color: var(--accent); font-family: var(--font-display); font-size: 18px; vertical-align: middle; }
+.card ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+.card li { padding-left: 0; }
+.try { display: inline-block; margin-top: 8px; color: var(--accent); font-size: 22px; font-weight: 500; text-decoration: none; }
+.stage-wrap { position: relative; min-height: 0; height: 100%; }
+.stage-wrap .live { height: 100%; }
+.tag { position: absolute; z-index: 2; padding: 8px 12px; border-radius: 10px; background: rgba(3,0,20,.82); color: var(--ink); font-size: 18px; font-weight: 500; box-shadow: rgba(255,255,255,.08) 0 0 16px inset; pointer-events: none; }
+.tag.a { top: 18px; left: 18px; }
+.tag.b { top: 18px; right: 18px; }
+.tag.c { bottom: 18px; left: 18px; }
+.opt { color: var(--accent); letter-spacing: 0.08em; font-size: 18px; font-weight: 500; }
 .link { color: var(--accent); text-decoration: none; font-weight: 500; }
-.row { display: grid; gap: 16px; }
+.row { display: grid; gap: 16px; align-content: start; align-items: start; }
 .g3 { grid-template-columns: 1fr 1fr 1fr; }
 .g4 { grid-template-columns: repeat(4, 1fr); }
 .card { background: var(--card); border-radius: 16px; padding: 24px 28px; box-shadow: rgba(255,255,255,.05) 0 0 24px inset; }
-.card h3 { font-family: var(--font-display); font-weight: 500; font-size: 24px; line-height: 1.33; margin-bottom: 10px; color: var(--ink); }
+.card h3 { font-family: var(--font-display); font-weight: 500; font-size: 28px; line-height: 1.3; margin-bottom: 14px; color: var(--ink); }
 .live { flex: 1; min-height: 0; margin-top: 16px; overflow: hidden; position: relative; border-radius: 16px; background: var(--card); box-shadow: rgba(255,255,255,.05) 0 0 24px inset; }
 .split { flex: 1; min-height: 0; display: grid; grid-template-columns: 520px 1fr; gap: 16px; }
-.split .copy { display: flex; flex-direction: column; gap: 16px; min-height: 0; }
+.split .copy, .split .stage-wrap { display: flex; flex-direction: column; gap: 16px; min-height: 0; height: 100%; }
 .split .live { margin-top: 0; height: 100%; }
-.split .card p { font-size: 17px; }
+.split .card p, .split .card li { font-size: 22px; }
 .live iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; border-radius: 16px; background: #030014; }
 .note { margin: 0 0 4px; color: var(--fog); max-width: 1400px; }
 @media print {
@@ -77,9 +89,10 @@ p { font-size: 18px; line-height: 1.5; font-weight: 400; color: var(--ash); }
 
 <section class="slide active visible">
   <div class="pad" style="align-items:center;text-align:center;justify-content:center;gap:20px;">
-    <p class="kicker">INT6064</p>
-    <h1>tesla-roadster-simulator</h1>
-    <p style="max-width:820px;">Secondary 2–3 write a short program. The car follows it. First the circuit, where Lesson 4 is marked. Then the curl ramp, which is optional.</p>
+    <p class="kicker">INT6064 · Coding and Computational Thinking</p>
+    <h1 style="font-size:56px;max-width:1400px;">Tesla Roadster Programming Simulator</h1>
+    <p style="max-width:980px;">Students in Secondary 2–3 write a short program. The car follows the circuit. Lesson 4 is the marked task. The loop ramp comes after, as an optional extension.</p>
+    <p class="muted">Group presentation · November 2026</p>
     <p class="muted">Sequence. Repeat. If. Not affiliated with Tesla, Inc.</p>
   </div>
 </section>
@@ -88,10 +101,11 @@ p { font-size: 18px; line-height: 1.5; font-weight: 400; color: var(--ash); }
   <div class="pad">
     <p class="kicker">The task</p>
     <h2>They program the car. They do not drive it.</h2>
-    <div class="row g3" style="flex:1;">
-      <article class="card"><h3>The class</h3><p>Hong Kong Secondary 2–3, about 13–15. Four lessons of about 40 minutes. Pairs share one browser. Nothing to install. Keyboard driving is turned off for the marked work. Path Preview, then Run.</p></article>
-      <article class="card"><h3>The panel</h3><p>Every program opens with Start and ends with Stop. The commands they need are Set Max Speed, Follow Track, Repeat, If, and Brake. Set Max Speed is in m/s. The strip under the stage reads speed, acceleration, distance, time, and lap from the same run.</p></article>
-      <article class="card"><h3>Two sites</h3><p>Circuit is Lessons 2 to 4. The in-app checks are prompts: one lap on track, two laps with Repeat, and an If that leaves the car nearly stopped. Curl ramp is a different site. Launch is the only extra command, and it is not marked.</p></article>
+    <p class="flow">Start → Add commands → Preview → Run</p>
+    <div class="row g3">
+      <article class="card"><h3><span class="mark">1</span>The class</h3><ul><li>Hong Kong students in Secondary 2–3, about 13–15.</li><li>Four lessons, about 40 minutes each.</li><li>One shared browser. Nothing to install.</li><li>Preview the path, then run the program.</li></ul></article>
+      <article class="card"><h3><span class="mark">2</span>The panel</h3><ul><li>Every program has Start and Stop.</li><li>Set Max Speed, Follow Track, Repeat, If, Brake.</li><li>Set Max Speed is in m/s.</li><li>The strip shows speed, distance, time, and lap.</li></ul></article>
+      <article class="card"><h3><span class="mark">3</span>Two sites</h3><ul><li>The circuit is Lessons 2 to 4.</li><li>Checks are prompts, not the grade.</li><li>The loop ramp is a second site.</li><li>Launch is optional and not marked.</li></ul></article>
     </div>
   </div>
 </section>
@@ -100,11 +114,11 @@ p { font-size: 18px; line-height: 1.5; font-weight: 400; color: var(--ash); }
   <div class="pad">
     <p class="kicker">Before the car moves</p>
     <h2>Each lesson adds one command.</h2>
-    <div class="row g4" style="flex:1;">
-      <article class="card"><h3>1 · Paper</h3><p>No computer. Pairs write six to ten lines and swap. The other pair walks a taped rectangle and does only what is written. “Go properly” fails. The rewrite is a number plus an action.</p></article>
-      <article class="card"><h3>2 · One lap</h3><p>Start, Set Max Speed 16, Follow Track, Stop. 16 is 16 m/s. The check wants lap at least 1, still on track, and more than 100 m. They point at the line that set the speed.</p></article>
-      <article class="card"><h3>3 · Repeat</h3><p>Repeat 2 times around Follow Track, at 20 m/s. Two pasted Follow Track lines also finish two laps. The check passes only when Repeat is in the program and lap is at least 2.</p></article>
-      <article class="card"><h3>4 · If</h3><p>Inside that Repeat: If lap &gt;= 1 then Set Max Speed 12, then Brake 6. The check wants an If and a car slower than 2 m/s. They write both speeds and one sentence. That is the grade.</p></article>
+    <div class="row g4">
+      <article class="card"><h3><span class="mark">1</span>Paper</h3><ul><li>Without computers, students work in pairs.</li><li>They write six to ten lines and swap.</li><li>“Go properly” is not a program command.</li><li>Rewrite it as a number plus an action.</li></ul></article>
+      <article class="card"><h3><span class="mark">2</span>One lap</h3><ul><li>Start. Set Max Speed 16. Follow Track. Stop.</li><li>16 means 16 m/s.</li><li>One lap, still on the track, past 100 m.</li><li>Point to the line that set the speed.</li></ul></article>
+      <article class="card"><h3><span class="mark">3</span>Repeat</h3><ul><li>Repeat 2 times { Follow Track } at 20 m/s.</li><li>Pasting the lap twice is a weaker program.</li><li>The check passes only if Repeat is included.</li><li>The lap count must reach 2.</li></ul></article>
+      <article class="card"><h3><span class="mark">4</span>If</h3><ul><li>If lap ≥ 1, set the target to 12 m/s.</li><li>Then Brake 6 and Stop.</li><li>The car must finish under 2 m/s.</li><li>This program, two readings, and one sentence are the grade.</li></ul></article>
     </div>
   </div>
 </section>
@@ -112,27 +126,38 @@ p { font-size: 18px; line-height: 1.5; font-weight: 400; color: var(--ash); }
 <section class="slide mist">
   <div class="pad">
     <div class="local"><span class="product">tesla-roadster-simulator</span><span class="pills"><span class="pill">The circuit</span><span class="pill-blue">Live</span></span></div>
-    <h2>This is the Lesson 4 program.</h2>
+    <h2>Example: the Lesson 4 program on the circuit.</h2>
+    <p class="flow">Now we combine these commands in a complete program.</p>
     <div class="split">
       <div class="copy">
-        <article class="card"><h3>What Run is doing</h3><p>Set Max Speed 24. Repeat 2 times: Follow Track, then If lap &gt;= 1 then Set Max Speed 12. Brake 6. Stop. Lap 1 holds 24 m/s. When lap becomes 1, the cap falls to 12. Brake brings the car under 2 m/s.</p></article>
-        <article class="card"><h3>What to read</h3><p>Speed (m/s), distance (m), time (s), and lap, on the strip. The green checks are prompts. A copied sample with no one able to point at the If does not count. Stop inside the Repeat would end the run on lap 1.</p></article>
+        <article class="card"><h3>The steps</h3><ul><li>1. Set Max Speed to 24 m/s.</li><li>2. Repeat the route twice.</li><li>3. Follow the track.</li><li>4. If lap ≥ 1, set the target to 12 m/s, then Brake 6.</li></ul><a class="try" href="https://song703.github.io/tesla-roadster-simulator/?play=advanced" target="_blank" rel="noopener">Try the simulator</a></article>
+        <article class="card"><h3>Read the strip</h3><ul><li>Speed, distance, time, and lap.</li><li>The target speeds are 24 m/s, then 12 m/s.</li><li>Green checks are prompts, not the grade.</li></ul></article>
       </div>
-      <div class="live" data-play="advanced"></div>
+      <div class="stage-wrap">
+        <div class="live" data-play="advanced"></div>
+        <span class="tag a">Repeat 2 times</span>
+        <span class="tag b">Follow Track</span>
+        <span class="tag c">If lap ≥ 1, then 12 m/s</span>
+      </div>
     </div>
   </div>
 </section>
 
 <section class="slide mist">
   <div class="pad">
-    <div class="local"><span class="product">tesla-roadster-simulator</span><span class="pills"><span class="launch">Not lesson 5</span><span class="pill-blue">Live</span></span></div>
-    <h2>Launch on the curl ramp.</h2>
+    <div class="local"><span class="product">Tesla Roadster Programming Simulator</span><span class="pills"><span class="opt">OPTIONAL</span><span class="pill">Beyond Lesson 4</span><span class="pill-blue">Live</span></span></div>
+    <h2>Launch on the loop ramp.</h2>
     <div class="split">
       <div class="copy">
-        <article class="card"><h3>What Run is doing</h3><p>A different site. Start, Launch, Record Data, Stop. Launch sends the car up the runway, around the 170° curl on suction, upside down, then the thrusters roll it level and it lands. The result line is height in metres, peak g, and kilograms of air. Holding W drives it by hand. That is not the task.</p></article>
-        <article class="card"><h3>Why it stays optional</h3><p>Finished pairs only, in the last minutes of Lesson 4. The question is what happens if max speed is too low to climb. Record Data is not required. Follow Track already hides steering, and this stunt hides it further. The mark is still the circuit program.</p></article>
+        <article class="card"><h3>What the run is doing</h3><ul><li>This is a different type of run.</li><li>Start, Launch, Record Data, and Stop.</li><li>Launch sends the car up the ramp, around the 170° loop, and through the landing.</li><li>Thrusters help the car level itself.</li><li>The result shows height in metres, peak g, and kilograms of air used.</li><li>Holding W drives the car by hand. That is not the task.</li></ul></article>
+        <article class="card"><h3>Why it stays optional</h3><ul><li>An extension after Lesson 4, not the core task.</li><li>The question: is the speed high enough to complete the loop?</li><li>Launch is not graded.</li><li>The Lesson 4 circuit program remains the focus.</li></ul></article>
       </div>
-      <div class="live" data-play="ramp"></div>
+      <div class="stage-wrap">
+        <div class="live" data-play="ramp"></div>
+        <span class="tag a">Launch</span>
+        <span class="tag b">Loop</span>
+        <span class="tag c">Record data</span>
+      </div>
     </div>
   </div>
 </section>
@@ -140,11 +165,11 @@ p { font-size: 18px; line-height: 1.5; font-weight: 400; color: var(--ash); }
 <section class="slide mist">
   <div class="pad">
     <p class="kicker">After both runs</p>
-    <h2>Keep three things from Lesson 4.</h2>
-    <div class="row g3" style="flex:1;">
-      <article class="card"><h3>The program</h3><p>An If that reads lap or speed, placed so it can become true. If lap = 2 fails because lap 2 does not exist yet. If lap &gt;= 1 after the first Follow Track is the line they can point at. Missing Start or Stop is rejected before the car moves.</p></article>
-      <article class="card"><h3>Two readings</h3><p>Speed during lap 1 and speed during lap 2, copied from the strip. In the sample those are 24 m/s, then 12 m/s. Brake with no If can stop the car and still does not pass.</p></article>
-      <article class="card"><h3>One sentence</h3><p>“Lap became 1, then max speed changed to 12.” The three on-screen checks are prompts for the teacher. The sentence is the student checking the run against the program.</p></article>
+    <h2>Remember three things from Lesson 4.</h2>
+    <div class="row g3">
+      <article class="card"><h3>The program</h3><ul><li>An If condition must eventually become true.</li><li>“If lap ≥ 1” works after the first lap.</li><li>“If lap = 2” fails if the run never reaches lap 2.</li><li>The program must also include Start and Stop.</li></ul></article>
+      <article class="card"><h3>Two readings</h3><ul><li>Record the speed during lap 1 and lap 2.</li><li>In the sample, the target speeds are 24 m/s and 12 m/s.</li><li>Braking alone does not make the program pass.</li></ul></article>
+      <article class="card"><h3>One sentence</h3><ul><li>“Lap became 1, then max speed changed to 12.”</li><li>The sentence describes what happened.</li><li>The three on-screen checks are prompts for the teacher, not extra commands.</li></ul></article>
     </div>
   </div>
 </section>
@@ -152,8 +177,8 @@ p { font-size: 18px; line-height: 1.5; font-weight: 400; color: var(--ash); }
 <section class="slide">
   <div class="pad" style="align-items:center;text-align:center;justify-content:center;gap:20px;">
     <p class="kicker">tesla-roadster-simulator</p>
-    <h1>The code is not the mark.</h1>
-    <p>Lesson 4 keeps the program, the two speeds, and one sentence. Launch is not part of that mark.</p>
+    <h1 style="max-width:1400px;">What matters is the program logic.</h1>
+    <p style="max-width:980px;">Lesson 4 combines sequence, repetition, conditions, data reading, and explanation — not just making the car move.</p>
     <p class="muted">Sequence. Repeat. If.</p>
   </div>
 </section>

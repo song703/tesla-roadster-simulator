@@ -54,6 +54,10 @@ p { font-size: 18px; line-height: 1.5; font-weight: 400; color: var(--ash); }
 .card { background: var(--card); border-radius: 16px; padding: 24px 28px; box-shadow: rgba(255,255,255,.05) 0 0 24px inset; }
 .card h3 { font-family: var(--font-display); font-weight: 500; font-size: 24px; line-height: 1.33; margin-bottom: 10px; color: var(--ink); }
 .live { flex: 1; min-height: 0; margin-top: 16px; overflow: hidden; position: relative; border-radius: 16px; background: var(--card); box-shadow: rgba(255,255,255,.05) 0 0 24px inset; }
+.split { flex: 1; min-height: 0; display: grid; grid-template-columns: 520px 1fr; gap: 16px; }
+.split .copy { display: flex; flex-direction: column; gap: 16px; min-height: 0; }
+.split .live { margin-top: 0; height: 100%; }
+.split .card p { font-size: 17px; }
 .live iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; border-radius: 16px; background: #030014; }
 .note { margin: 0 0 4px; color: var(--fog); max-width: 1400px; }
 @media print {
@@ -94,37 +98,29 @@ p { font-size: 18px; line-height: 1.5; font-weight: 400; color: var(--ash); }
 
 <section class="slide mist">
   <div class="pad">
-    <div class="local"><span class="product">tesla-roadster-simulator</span><span class="pills"><span class="pill">Lesson 2</span><span class="pill-blue">Live</span></span></div>
-    <h2>One lap. Set Max Speed 16.</h2>
-    <p class="note">Look at the data strip, not the car. 16 is 16 m/s. Ask which line chose that number. A copied sample is not the mark.</p>
-    <div class="live" data-play="beginner"></div>
-  </div>
-</section>
-
-<section class="slide mist">
-  <div class="pad">
-    <div class="local"><span class="product">tesla-roadster-simulator</span><span class="pills"><span class="pill">Lesson 3</span><span class="pill-blue">Live</span></span></div>
-    <h2>Repeat 2 times. Same lap, counted.</h2>
-    <p class="note">Pasting Follow Track twice finishes the same way, but a change must be made in two places. Stop inside the braces ends lap 1.</p>
-    <div class="live" data-play="intermediate"></div>
-  </div>
-</section>
-
-<section class="slide mist">
-  <div class="pad">
-    <div class="local"><span class="product">tesla-roadster-simulator</span><span class="pills"><span class="pill">Lesson 4</span><span class="pill-blue">Live</span></span></div>
-    <h2>If lap &gt;= 1, the cap falls to 12.</h2>
-    <p class="note">Lap 1 stays at 24 m/s. Lap 2 drops to 12. The sentence they write cites those two readings. A brake with no If does not pass.</p>
-    <div class="live" data-play="advanced"></div>
+    <div class="local"><span class="product">tesla-roadster-simulator</span><span class="pills"><span class="pill">The circuit</span><span class="pill-blue">Live</span></span></div>
+    <h2>Run the laps.</h2>
+    <div class="split">
+      <div class="copy">
+        <article class="card"><h3>What is running</h3><p>Set Max Speed 20, then Repeat 2 times Follow Track. 20 is 20 m/s. Lessons 2 to 4 all stay on this circuit. The car is the evidence. The program is the work.</p></article>
+        <article class="card"><h3>What to point at</h3><p>The data strip, not the bodywork. Pasting the lap twice is the same motion and a worse algorithm. On the next lap an If can drop the cap to 12. A copied sample is not the mark.</p></article>
+      </div>
+      <div class="live" data-play="intermediate"></div>
+    </div>
   </div>
 </section>
 
 <section class="slide mist">
   <div class="pad">
     <div class="local"><span class="product">tesla-roadster-simulator</span><span class="pills"><span class="launch">Not lesson 5</span><span class="pill-blue">Live</span></span></div>
-    <h2>Launch. Cold-gas thrusters.</h2>
-    <p class="note">Same idea as the circuit: a number they set has to be enough for the manoeuvre. Pairs who finish early only. Easy to overuse.</p>
-    <div class="live" data-play="ramp"></div>
+    <h2>Take the ramp.</h2>
+    <div class="split">
+      <div class="copy">
+        <article class="card"><h3>What is running</h3><p>Start, Launch, Record Data, Stop. Launch is the cold-gas push up the curl ramp. The speed they set has to be enough for the jump. Same rule as the circuit: a number becomes a motion.</p></article>
+        <article class="card"><h3>What to say</h3><p>Early finishers only. Easy to overuse, because the stunt hides the algorithm. It is not a fifth lesson. The required work stays on the laps.</p></article>
+      </div>
+      <div class="live" data-play="ramp"></div>
+    </div>
   </div>
 </section>
 

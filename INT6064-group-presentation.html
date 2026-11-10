@@ -79,7 +79,7 @@ p { font-size: 18px; line-height: 1.5; font-weight: 400; color: var(--ash); }
   <div class="pad" style="align-items:center;text-align:center;justify-content:center;gap:20px;">
     <p class="kicker">INT6064</p>
     <h1>tesla-roadster-simulator</h1>
-    <p style="max-width:760px;">A safe test lap for Secondary 2–3. Students write the instructions. One idea is added each lesson, then you see it run twice: the laps, then the ramp.</p>
+    <p style="max-width:820px;">Secondary 2–3 write a short program. The car follows it. First the circuit, where Lesson 4 is marked. Then the curl ramp, which is optional.</p>
     <p class="muted">Sequence. Repeat. If. Not affiliated with Tesla, Inc.</p>
   </div>
 </section>
@@ -87,11 +87,11 @@ p { font-size: 18px; line-height: 1.5; font-weight: 400; color: var(--ash); }
 <section class="slide">
   <div class="pad">
     <p class="kicker">The task</p>
-    <h2>One number becomes a motion.</h2>
+    <h2>They program the car. They do not drive it.</h2>
     <div class="row g3" style="flex:1;">
-      <article class="card"><h3>Who it is for</h3><p>Hong Kong Secondary 2–3, about 13–15. Four lessons, about 40 minutes. Pairs share one browser tab and install nothing. They do not steer. They send the car around the circuit and slow it down when a rule is met.</p></article>
-      <article class="card"><h3>Why not Scratch or Python</h3><p>Scratch already taught them sequence, but ten steps is not metres per second. Python is the next module, when the same brief becomes a table. Here they type Start, Repeat, and If. There is no eval, and a run is capped.</p></article>
-      <article class="card"><h3>What the two runs show</h3><p>Both pages use the same rule. Set a speed, run the program, read the strip. The circuit is the required work. The ramp is that rule on a jump, for pairs who finish early. It is not a fifth lesson.</p></article>
+      <article class="card"><h3>The class</h3><p>Hong Kong Secondary 2–3, about 13–15. Four lessons of about 40 minutes. Pairs share one browser. Nothing to install. Keyboard driving is turned off for the marked work. Path Preview, then Run.</p></article>
+      <article class="card"><h3>The panel</h3><p>Every program opens with Start and ends with Stop. The commands they need are Set Max Speed, Follow Track, Repeat, If, and Brake. Set Max Speed is in m/s. The strip under the stage reads speed, acceleration, distance, time, and lap from the same run.</p></article>
+      <article class="card"><h3>Two sites</h3><p>Circuit is Lessons 2 to 4. The in-app checks are prompts: one lap on track, two laps with Repeat, and an If that leaves the car nearly stopped. Curl ramp is a different site. Launch is the only extra command, and it is not marked.</p></article>
     </div>
   </div>
 </section>
@@ -99,12 +99,12 @@ p { font-size: 18px; line-height: 1.5; font-weight: 400; color: var(--ash); }
 <section class="slide mist">
   <div class="pad">
     <p class="kicker">Before the car moves</p>
-    <h2>Four lessons. One new line each time.</h2>
+    <h2>Each lesson adds one command.</h2>
     <div class="row g4" style="flex:1;">
-      <article class="card"><h3>1 · Paper</h3><p>No computer. Pairs write the lap, then swap. The other pair walks only what is written. “Go properly” fails. One vague line is rewritten as a number plus an action.</p></article>
-      <article class="card"><h3>2 · Sequence</h3><p>Start, Set Max Speed, Follow Track, Stop. A broken program is shown first. They change only the speed and say what the strip did.</p></article>
-      <article class="card"><h3>3 · Repeat</h3><p>The same lap, counted. Pasting Follow Track twice is the same motion and a worse algorithm, because a change must be made in two places.</p></article>
-      <article class="card"><h3>4 · If</h3><p>After lap 1, the cap falls. They keep the program, two readings, and one sentence. That is the grade. The banner in the app is only a prompt.</p></article>
+      <article class="card"><h3>1 · Paper</h3><p>No computer. Pairs write six to ten lines and swap. The other pair walks a taped rectangle and does only what is written. “Go properly” fails. The rewrite is a number plus an action.</p></article>
+      <article class="card"><h3>2 · One lap</h3><p>Start, Set Max Speed 16, Follow Track, Stop. 16 is 16 m/s. The check wants lap at least 1, still on track, and more than 100 m. They point at the line that set the speed.</p></article>
+      <article class="card"><h3>3 · Repeat</h3><p>Repeat 2 times around Follow Track, at 20 m/s. Two pasted Follow Track lines also finish two laps. The check passes only when Repeat is in the program and lap is at least 2.</p></article>
+      <article class="card"><h3>4 · If</h3><p>Inside that Repeat: If lap &gt;= 1 then Set Max Speed 12, then Brake 6. The check wants an If and a car slower than 2 m/s. They write both speeds and one sentence. That is the grade.</p></article>
     </div>
   </div>
 </section>
@@ -112,13 +112,13 @@ p { font-size: 18px; line-height: 1.5; font-weight: 400; color: var(--ash); }
 <section class="slide mist">
   <div class="pad">
     <div class="local"><span class="product">tesla-roadster-simulator</span><span class="pills"><span class="pill">The circuit</span><span class="pill-blue">Live</span></span></div>
-    <h2>Lessons 2 and 3, on the circuit.</h2>
+    <h2>This is the Lesson 4 program.</h2>
     <div class="split">
       <div class="copy">
-        <article class="card"><h3>The program on screen</h3><p>Set Max Speed 20, then Repeat 2 times Follow Track. 20 is 20 m/s. Lesson 2 was that speed on one lap. Lesson 3 counts the lap instead of pasting it. Lesson 4, next, drops the second lap to 12.</p></article>
-        <article class="card"><h3>Read the strip</h3><p>Time, speed, and distance belong to this run. Ask which line chose 20. A copied sample that happens to pass is not the mark.</p></article>
+        <article class="card"><h3>What Run is doing</h3><p>Set Max Speed 24. Repeat 2 times: Follow Track, then If lap &gt;= 1 then Set Max Speed 12. Brake 6. Stop. Lap 1 holds 24 m/s. When lap becomes 1, the cap falls to 12. Brake brings the car under 2 m/s.</p></article>
+        <article class="card"><h3>What to read</h3><p>Speed (m/s), distance (m), time (s), and lap, on the strip. The green checks are prompts. A copied sample with no one able to point at the If does not count. Stop inside the Repeat would end the run on lap 1.</p></article>
       </div>
-      <div class="live" data-play="intermediate"></div>
+      <div class="live" data-play="advanced"></div>
     </div>
   </div>
 </section>
@@ -126,11 +126,11 @@ p { font-size: 18px; line-height: 1.5; font-weight: 400; color: var(--ash); }
 <section class="slide mist">
   <div class="pad">
     <div class="local"><span class="product">tesla-roadster-simulator</span><span class="pills"><span class="launch">Not lesson 5</span><span class="pill-blue">Live</span></span></div>
-    <h2>The same rule, on the ramp.</h2>
+    <h2>Launch on the curl ramp.</h2>
     <div class="split">
       <div class="copy">
-        <article class="card"><h3>Still one number</h3><p>The last page set 20 m/s for a lap. This page uses Launch, the cold-gas push, and the speed has to be enough for the jump. Start, Launch, Record Data, Stop. The strip is still how they know it worked.</p></article>
-        <article class="card"><h3>Still not lesson 5</h3><p>Pairs who finish the four lessons can try it. The stunt is easy to overuse, because it hides the algorithm. The grade stays on the circuit: program, two readings, one sentence.</p></article>
+        <article class="card"><h3>What Run is doing</h3><p>A different site. Start, Launch, Record Data, Stop. Launch sends the car up the runway, around the 170° curl on suction, upside down, then the thrusters roll it level and it lands. The result line is height in metres, peak g, and kilograms of air. Holding W drives it by hand. That is not the task.</p></article>
+        <article class="card"><h3>Why it stays optional</h3><p>Finished pairs only, in the last minutes of Lesson 4. The question is what happens if max speed is too low to climb. Record Data is not required. Follow Track already hides steering, and this stunt hides it further. The mark is still the circuit program.</p></article>
       </div>
       <div class="live" data-play="ramp"></div>
     </div>
@@ -140,11 +140,11 @@ p { font-size: 18px; line-height: 1.5; font-weight: 400; color: var(--ash); }
 <section class="slide mist">
   <div class="pad">
     <p class="kicker">After both runs</p>
-    <h2>Lesson 4 is the mark.</h2>
+    <h2>Keep three things from Lesson 4.</h2>
     <div class="row g3" style="flex:1;">
-      <article class="card"><h3>Program, readings, sentence</h3><p>An If tied to lap or speed, the two speeds from the strip, and one sentence: “Lap became 1, then max speed changed to 12.” The banner in the app is a prompt. A copied sample does not count.</p></article>
-      <article class="card"><h3>The mistake we expect</h3><p>If lap = 2 names a lap that does not exist yet. Use lap &gt;= 1 after the first Follow Track. A missing Start or Stop is rejected before the car moves. Faster is not the goal. Lesson 4 lowers the cap.</p></article>
-      <article class="card"><h3>What the ramp is not</h3><p>It uses the same rule and it is not assessed. Follow Track already hides the steering, so the jump can look like success without an algorithm. The required work stays on the laps.</p></article>
+      <article class="card"><h3>The program</h3><p>An If that reads lap or speed, placed so it can become true. If lap = 2 fails because lap 2 does not exist yet. If lap &gt;= 1 after the first Follow Track is the line they can point at. Missing Start or Stop is rejected before the car moves.</p></article>
+      <article class="card"><h3>Two readings</h3><p>Speed during lap 1 and speed during lap 2, copied from the strip. In the sample those are 24 m/s, then 12 m/s. Brake with no If can stop the car and still does not pass.</p></article>
+      <article class="card"><h3>One sentence</h3><p>“Lap became 1, then max speed changed to 12.” The three on-screen checks are prompts for the teacher. The sentence is the student checking the run against the program.</p></article>
     </div>
   </div>
 </section>
@@ -153,7 +153,7 @@ p { font-size: 18px; line-height: 1.5; font-weight: 400; color: var(--ash); }
   <div class="pad" style="align-items:center;text-align:center;justify-content:center;gap:20px;">
     <p class="kicker">tesla-roadster-simulator</p>
     <h1>The code is not the mark.</h1>
-    <p>The laps are the work: program, two readings, one sentence. The ramp only repeats that rule.</p>
+    <p>Lesson 4 keeps the program, the two speeds, and one sentence. Launch is not part of that mark.</p>
     <p class="muted">Sequence. Repeat. If.</p>
   </div>
 </section>

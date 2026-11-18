@@ -91,46 +91,56 @@ p, li { font-size: 22px; line-height: 1.45; font-weight: 400; color: var(--ash);
   <div class="pad" style="align-items:center;text-align:center;justify-content:center;gap:20px;">
     <p class="kicker">INT6064 · Coding and Computational Thinking</p>
     <h1 style="font-size:56px;max-width:1400px;">Tesla Roadster Programming Simulator</h1>
-    <p style="max-width:980px;">A four-lesson coding sequence for Secondary 2–3. The simulator is the classroom tool. Students will write the program. The car will follow it.</p>
+    <p style="max-width:980px;">Five programs from the Tutorial menu. One lap. Two laps. A slower second lap. A square. Then the car takes off.</p>
     <p class="muted">Group TUFF · November 2026 · Not affiliated with Tesla, Inc.</p>
   </div>
 </section>
 
 <section class="slide">
   <div class="pad">
-    <p class="kicker">What the lessons are</p>
-    <h2>Students write the program. The car follows it.</h2>
-    <p class="flow">Start → Add commands → Preview → Run</p>
+    <p class="kicker">From the Tutorial</p>
+    <h2>Build a program. Preview it. Then run it.</h2>
+    <p class="flow">Start → Add commands → Path Preview → Run</p>
     <div class="row g3">
-      <article class="card"><h3><span class="mark">1</span>Who it is for</h3><ul><li>Hong Kong students in Secondary 2–3.</li><li>About 13–15 years old.</li><li>Four lessons, about 40 minutes each.</li><li>Two students, one browser, nothing to install.</li></ul></article>
-      <article class="card"><h3><span class="mark">2</span>What they write</h3><ul><li>They do not steer with the keyboard.</li><li>Start, Set Max Speed, Follow Track, Repeat, If.</li><li>Set Max Speed is in metres per second.</li><li>The strip shows speed, distance, time, and lap.</li></ul></article>
-      <article class="card"><h3><span class="mark">3</span>What we look for</h3><ul><li>Sequence, then repetition, then a condition.</li><li>The look of the car is not the lesson.</li><li>The circuit is the required work.</li><li>The ramp is an extra, shown after the lessons.</li></ul></article>
+      <article class="card"><h3><span class="mark">1</span>Add a block</h3><ul><li>Pick a command on the right.</li><li>It inserts at the cursor.</li><li>The old lines stay.</li><li>Type the number, then press the block.</li></ul></article>
+      <article class="card"><h3><span class="mark">2</span>Run it</h3><ul><li>Path Preview draws the route.</li><li>Run drives that route.</li><li>Reset returns the car to the start.</li><li>Every program has Start and Stop.</li></ul></article>
+      <article class="card"><h3><span class="mark">3</span>Two sites</h3><ul><li>The circuit uses Follow Track, Turn, and Drive.</li><li>The curl ramp uses Launch.</li><li>The next pages are the five programs.</li><li>Load them from the sample menu, in this order.</li></ul></article>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="pad">
+    <p class="kicker">Beginner</p>
+    <h2>One lap. Stay in the lane.</h2>
+    <div class="row g3">
+      <article class="card"><h3>What it is</h3><ul><li>The Tutorial calls this “Reach the finish line.”</li><li>Set a maximum speed, then follow the track once.</li><li>The goal is one lap without leaving the lane.</li></ul></article>
+      <article class="card"><h3>The program</h3><ul><li>Start</li><li>Set Max Speed 16</li><li>Follow Track</li><li>Stop</li></ul></article>
+      <article class="card"><h3>What 16 means</h3><ul><li>16 is 16 metres per second.</li><li>Point at the line that chose it.</li><li>A copied sample is not the mark.</li></ul></article>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="pad">
+    <p class="kicker">Intermediate</p>
+    <h2>Two laps, with Repeat.</h2>
+    <div class="row g3">
+      <article class="card"><h3>What it is</h3><ul><li>The Tutorial calls this “Two clean laps.”</li><li>The same lap runs twice because it is counted.</li><li>The goal is Repeat, and every lap stays on the track.</li></ul></article>
+      <article class="card"><h3>The program</h3><ul><li>Start</li><li>Set Max Speed 20</li><li>Repeat 2 times { Follow Track }</li><li>Stop</li></ul></article>
+      <article class="card"><h3>What does not count</h3><ul><li>Pasting Follow Track twice can look the same.</li><li>A later change must then be made twice.</li><li>Stop inside the braces ends the run on lap 1.</li></ul></article>
     </div>
   </div>
 </section>
 
 <section class="slide mist">
   <div class="pad">
-    <p class="kicker">The four lessons</p>
-    <h2>One new idea each lesson.</h2>
-    <div class="row g4">
-      <article class="card"><h3><span class="mark">1</span>Paper</h3><ul><li>Without computers, students work in pairs.</li><li>They write six to ten lines and swap.</li><li>“Go properly” is not a program command.</li><li>Rewrite it as a number plus an action.</li></ul></article>
-      <article class="card"><h3><span class="mark">2</span>One lap</h3><ul><li>Start. Set Max Speed 16. Follow Track. Stop.</li><li>16 means 16 m/s.</li><li>One lap, still on the track, past 100 m.</li><li>Point to the line that set the speed.</li></ul></article>
-      <article class="card"><h3><span class="mark">3</span>Repeat</h3><ul><li>Repeat 2 times { Follow Track } at 20 m/s.</li><li>Pasting the lap twice is a weaker program.</li><li>The check passes only if Repeat is included.</li><li>The lap count must reach 2.</li></ul></article>
-      <article class="card"><h3><span class="mark">4</span>If</h3><ul><li>After the first lap, go slower.</li><li>If lap ≥ 1, set the target to 12 m/s.</li><li>The next page runs this program.</li><li>How it is marked comes after the two runs.</li></ul></article>
-    </div>
-  </div>
-</section>
-
-<section class="slide mist">
-  <div class="pad">
-    <div class="local"><span class="product">tesla-roadster-simulator</span><span class="pills"><span class="pill">The circuit</span><span class="pill-blue">Live</span></span></div>
-    <h2>Lesson 4, running on the circuit.</h2>
-    <p class="flow">Sequence, Repeat, and If, in one program.</p>
+    <div class="local"><span class="product">Tesla Roadster Programming Simulator</span><span class="pills"><span class="pill">Advanced</span><span class="pill-blue">Live</span></span></div>
+    <h2>Slow down for lap two.</h2>
     <div class="split">
       <div class="copy">
-        <article class="card"><h3>The steps</h3><ul><li>1. Set Max Speed to 24 m/s.</li><li>2. Repeat the route twice.</li><li>3. Follow the track.</li><li>4. If lap ≥ 1, set the target to 12 m/s, then Brake 6.</li></ul><a class="try" href="https://song703.github.io/tesla-roadster-simulator/?play=advanced" target="_blank" rel="noopener">Try the simulator</a></article>
-        <article class="card"><h3>Read the strip</h3><ul><li>Speed, distance, time, and lap.</li><li>The target speeds are 24 m/s, then 12 m/s.</li><li>Green checks are prompts, not the grade.</li></ul></article>
+        <article class="card"><h3>What it is</h3><ul><li>The Tutorial calls this “Brake on a condition.”</li><li>Lap 1 stays at 24 m/s.</li><li>When lap becomes 1, the target falls to 12 m/s.</li><li>Read both speeds. One sentence is the mark.</li></ul></article>
+        <article class="card"><h3>The program</h3><ul><li>Set Max Speed 24.</li><li>Repeat 2 times.</li><li>Follow Track.</li><li>If lap ≥ 1, set the target to 12, then Brake 6.</li></ul></article>
       </div>
       <div class="stage-wrap">
         <div class="live" data-play="advanced"></div>
@@ -142,33 +152,33 @@ p, li { font-size: 22px; line-height: 1.45; font-weight: 400; color: var(--ash);
   </div>
 </section>
 
-<section class="slide mist">
+<section class="slide">
   <div class="pad">
-    <div class="local"><span class="product">Tesla Roadster Programming Simulator</span><span class="pills"><span class="opt">OPTIONAL</span><span class="pill">Beyond Lesson 4</span><span class="pill-blue">Live</span></span></div>
-    <h2>After the lessons: the loop ramp.</h2>
-    <div class="split">
-      <div class="copy">
-        <article class="card"><h3>What the run is doing</h3><ul><li>This is a different type of run.</li><li>Start, Launch, Record Data, and Stop.</li><li>Launch sends the car up the ramp, around the 170° loop, and through the landing.</li><li>Thrusters help the car level itself.</li><li>The result shows height in metres, peak g, and kilograms of air used.</li><li>Holding W drives the car by hand. That is not the task.</li></ul></article>
-        <article class="card"><h3>Why it stays optional</h3><ul><li>An extension after Lesson 4, not the core task.</li><li>The question: is the speed high enough to complete the loop?</li><li>Launch is not graded.</li><li>The Lesson 4 circuit program remains the focus.</li></ul></article>
-      </div>
-      <div class="stage-wrap">
-        <div class="live" data-play="ramp"></div>
-        <span class="tag a">Launch</span>
-        <span class="tag b">Loop</span>
-        <span class="tag c">Record data</span>
-      </div>
+    <p class="kicker">Square</p>
+    <h2>Four corners. No centreline.</h2>
+    <div class="row g3">
+      <article class="card"><h3>What it is</h3><ul><li>This sample does not use Follow Track.</li><li>The car draws a square with Drive and Turn.</li><li>A square is a different route from one lap of the circuit.</li></ul></article>
+      <article class="card"><h3>The program</h3><ul><li>Drive Forward 15.</li><li>Turn Left 90.</li><li>Those two lines, four times.</li><li>Then Stop.</li></ul></article>
+      <article class="card"><h3>Why it is here</h3><ul><li>The Tutorial allows Turn and Drive on the circuit.</li><li>Follow Track hides the steering.</li><li>This program makes the turn visible.</li></ul></article>
     </div>
   </div>
 </section>
 
 <section class="slide mist">
   <div class="pad">
-    <p class="kicker">Only now, the mark</p>
-    <h2>Lesson 4 asks for three things.</h2>
-    <div class="row g3">
-      <article class="card"><h3>The program</h3><ul><li>An If condition must eventually become true.</li><li>“If lap ≥ 1” works after the first lap.</li><li>“If lap = 2” fails if the run never reaches lap 2.</li><li>The program must also include Start and Stop.</li></ul></article>
-      <article class="card"><h3>Two readings</h3><ul><li>Record the speed during lap 1 and lap 2.</li><li>In the sample, the target speeds are 24 m/s and 12 m/s.</li><li>Braking alone does not make the program pass.</li></ul></article>
-      <article class="card"><h3>One sentence</h3><ul><li>“Lap became 1, then max speed changed to 12.”</li><li>The sentence describes what happened.</li><li>The three on-screen checks are prompts for the teacher, not extra commands.</li></ul></article>
+    <div class="local"><span class="product">Tesla Roadster Programming Simulator</span><span class="pills"><span class="pill">Curl ramp</span><span class="pill-blue">Live</span></span></div>
+    <h2>The car takes off.</h2>
+    <div class="split">
+      <div class="copy">
+        <article class="card"><h3>What it is</h3><ul><li>A second site, not another lap.</li><li>Launch drives the runway and the 170° curl.</li><li>The car hangs upside down, then the thrusters roll it level.</li><li>It lands on its wheels.</li></ul></article>
+        <article class="card"><h3>The program</h3><ul><li>Start</li><li>Launch</li><li>Record Data</li><li>Stop</li><li>Holding W is driving by hand. That is not the task.</li></ul></article>
+      </div>
+      <div class="stage-wrap">
+        <div class="live" data-play="ramp"></div>
+        <span class="tag a">Launch</span>
+        <span class="tag b">170° curl</span>
+        <span class="tag c">Record data</span>
+      </div>
     </div>
   </div>
 </section>
@@ -176,8 +186,8 @@ p, li { font-size: 22px; line-height: 1.45; font-weight: 400; color: var(--ash);
 <section class="slide">
   <div class="pad" style="align-items:center;text-align:center;justify-content:center;gap:20px;">
     <p class="kicker">tesla-roadster-simulator</p>
-    <h1 style="max-width:1400px;">What matters is the program logic.</h1>
-    <p style="max-width:980px;">Lesson 4 combines sequence, repetition, conditions, data reading, and explanation — not just making the car move.</p>
+    <h1 style="max-width:1500px;">Five programs. One idea each.</h1>
+    <p style="max-width:1100px;">One lap. Two laps. A condition. A square. A takeoff.</p>
     <p class="muted">Sequence. Repeat. If.</p>
   </div>
 </section>
